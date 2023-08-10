@@ -16,6 +16,7 @@ import { SuplierComponent } from './component/suplier/suplier.component';
 import { ProductDetailComponent } from './component/detail/product/productdetail.component';
 import { ProductAddComponent } from './component/add/product/productadd.component';
 import { BaseURLService } from './service/baseurl.service';
+import { ValidatorData } from './service/validatorData.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { BaseURLService } from './service/baseurl.service';
     ,
   ],
   providers: [
-    BaseURLService
+    BaseURLService,ValidatorData
   ],
   bootstrap: [AppComponent]
 })
