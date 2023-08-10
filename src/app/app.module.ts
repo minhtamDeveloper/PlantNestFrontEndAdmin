@@ -15,6 +15,7 @@ import { InvoiceDetailComponent } from './component/detail/invoice/invoicedetail
 import { SuplierComponent } from './component/suplier/suplier.component';
 import { ProductDetailComponent } from './component/detail/product/productdetail.component';
 import { ProductAddComponent } from './component/add/product/productadd.component';
+import { BaseURLService } from './service/baseurl.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { ProductAddComponent } from './component/add/product/productadd.componen
     HttpClientModule
     ,
   ],
-  providers: [],
+  providers: [
+    BaseURLService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
