@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+  <h1 class="mx-auto">Add Category </h1>
+ </div>
+ <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+       <!-- Nested Row within Card Body -->
+
+       <div class="row">
+
+          <div *ngIf="this.selectedFileUrl==''" class="col-lg-5 img-fluid " style="background-image:url(https://i.pinimg.com/736x/76/c4/05/76c4055d65396688f90a88e2dd4d91b8.jpg);">
+
+          </div>
+          <div *ngIf="this.selectedFileUrl!=''" class="col-lg-5" >
+           <img [src]="this.selectedFileUrl" class="img-fluid">
+          </div>
+          <div class="col-lg-7">
+             <div class="p-5">
+
+                <ng-container *ngIf="this.formGroup!=null">
+                   <form class="user" [formGroup]="this.formGroup" (ngSubmit)="submit()">
+                   <div class="form-group">
+
+                        <ng-container *ngIf="this.options!=[]">
+                          <select  formControlName="categoryId"
+                          [ngClass]="{'border-danger': validationService.getErrorAddClass('categoryId', formGroup)}"
+                          class="  form-control  form-select  "
+                          style="max-height: 100px; overflow-y: scroll"
+                          >
+                          <option value="">Select category </option>
+                          <option *ngFor="let option of options" value="{{option.value}}">
+                            {{option.label}}
+                            </option>
+                          </select>
+                        </ng-container>
+
+
+
+                      <div class="text-danger" *ngIf="validationService.getErrorText('categoryId', 'categoryId', formGroup)"> {{ validationService.getErrorText('categoryId', 'categoryId', formGroup) }} </div>
+                   </div>
+
+                   <div class="form-group">
+                      <input
+                         type="text"
+
+                         formControlName="categoryName"
+                         [ngClass]="{'border-danger': validationService.getErrorAddClass('categoryName', formGroup)}"
+                         class="form-control form-control-user"
+                         placeholder="Name">
+                      <div class="text-danger" *ngIf="validationService.getErrorText('categoryName', 'categoryName', formGroup)"> {{ validationService.getErrorText('categoryName', 'Name ', formGroup) }} </div>
+                   </div>
+
+
+
+                   <div class="form-group text-align-center">
+                    <input
+                       type="file"
+                       accept=".jpg,.jpeg,.png,.gif"
+
+
+
+                       style="background-color:#2e59d9;color: #fff;text-align:center;align-items: center;"
+                       class="form-control-file form-control-user "
+                       placeholder="Category Id"
+                       (change)="handleFileSelect($event)"
+                       >
+
+                 </div>
+                 <br>
+                 <div class="form-group row">
+
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+
+                        <ng-container *ngIf="this.healDelete">
+                          <button type="submit " class="form-control-user  btn btn-primary btn-lg btn-block  " [disabled]="isLoading ">
+                            <h2 *ngIf="isLoading " class="spinner-border spinner-border-sm mr-2 "></h2>
+                            {{ isLoading ? 'Loading...' : 'Submit' }}
+                          </button>
+                        </ng-container>
+
+
+                      </div>
+                  <div class="col-sm-6">
+                    <ng-container *ngIf="this.isDelete">
+                      <button type="button"
+                      class="form-control-user  btn btn-danger btn-lg btn-block"
+                      (click)="delete()"
+                      [disabled]="isLoading ">
+                        <h2 *ngIf="isLoading "
+                         class="spinner-border spinner-border-sm mr-2 "></h2>
+                        {{ isLoading ? 'Loading...' : 'Delete' }}
+                      </button>
+                    </ng-container>
+                    <ng-container *ngIf="!this.healDelete">
+                        <button type="button"
+                        class="form-control-user  btn btn-success btn-lg btn-block"
+                        (click)="enable()"
+                        [disabled]="isLoading ">
+                          <h2 *ngIf="isLoading "
+                          class="spinner-border spinner-border-sm mr-2 "></h2>
+                          {{ isLoading ? 'Loading...' : 'Enable' }}
+                        </button>
+                    </ng-container>
+
+                    </div>
+              </div>
+
+
+
+                   <div class="form-group">
+
+                   </div>
+                   </form>
+                </ng-container>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>

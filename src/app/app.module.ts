@@ -17,6 +17,12 @@ import { ProductDetailComponent } from './component/detail/product/productdetail
 import { ProductAddComponent } from './component/add/product/productadd.component';
 import { BaseURLService } from './service/baseurl.service';
 import { ValidatorData } from './service/validatorData.service';
+import { CategoryIndexComponent } from './component/category/index.compoent';
+import { CategoryAdd2Component } from './component/category/create2.component';
+import { CategoryService } from './service/categoty.service';
+import { CategoryUpdateComponent } from './component/category/update.component';
+import { RegexApi } from './service/regex.service';
+import { CategoryDetailComponent } from './component/category/detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,12 @@ import { ValidatorData } from './service/validatorData.service';
     SuplierComponent,
     InvoiceDetailComponent,
     ProductDetailComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    CategoryIndexComponent,
+
+CategoryAdd2Component,
+CategoryUpdateComponent,
+CategoryDetailComponent
 
   ],
   imports: [
@@ -40,9 +51,10 @@ import { ValidatorData } from './service/validatorData.service';
     ReactiveFormsModule,
     HttpClientModule
     ,
+
   ],
   providers: [
-    BaseURLService,ValidatorData
+    BaseURLService,ValidatorData,CategoryService,RegexApi
   ],
   bootstrap: [AppComponent]
 })

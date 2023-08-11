@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 
 //interface laf implements
 export class ProductAddComponent implements OnInit{
-
+  isLoading:boolean=false;
   activeBouquet!: string;
   constructor(
     private router: Router
