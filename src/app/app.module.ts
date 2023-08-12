@@ -15,6 +15,7 @@ import { InvoiceDetailComponent } from './component/detail/invoice/invoicedetail
 import { SuplierComponent } from './component/suplier/suplier.component';
 import { ProductDetailComponent } from './component/detail/product/productdetail.component';
 import { ProductAddComponent } from './component/add/product/productadd.component';
+
 import { BaseURLService } from './service/baseurl.service';
 import { ValidatorData } from './service/validatorData.service';
 import { CategoryIndexComponent } from './component/category/index.compoent';
@@ -25,6 +26,13 @@ import { RegexApi } from './service/regex.service';
 import { CategoryDetailComponent } from './component/category/detail.component';
 import { Product123Service } from './service/product123.service';
 import { ProductUpdateComponent } from './component/add/product/productUpdate.component';
+
+import { ProductService } from './service/product.service';
+
+import { DatePipe } from '@angular/common';
+import { OrderService } from './service/order.service';
+import { OrderDetailService } from './service/orderDetail.service';
+
 
 @NgModule({
   declarations: [
@@ -39,12 +47,14 @@ import { ProductUpdateComponent } from './component/add/product/productUpdate.co
     InvoiceDetailComponent,
     ProductDetailComponent,
     ProductAddComponent,
+
     CategoryIndexComponent,
 
 CategoryAdd2Component,
 CategoryUpdateComponent,
 CategoryDetailComponent,
-ProductUpdateComponent
+ProductUpdateComponent,
+
 
   ],
   imports: [
@@ -57,8 +67,15 @@ ProductUpdateComponent
 
   ],
   providers: [
-    BaseURLService,ValidatorData,CategoryService,RegexApi,Product123Service
+    BaseURLService,ValidatorData,CategoryService,RegexApi
+    ,Product123Service, ProductService,
+    OrderService,
+    OrderDetailService,
+    DatePipe,
   ],
+
+
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
