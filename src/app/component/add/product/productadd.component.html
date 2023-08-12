@@ -1,13 +1,16 @@
 <div class="container">
+  <div class="row">
+    <h1 class="mx-auto">Add Product </h1>
+   </div>
   <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
           <!-- Nested Row within Card Body -->
           <div class="row">
-            <div class="col-lg-5 d-none d-lg-block" style="background-image: url(https://i.pinimg.com/736x/76/c4/05/76c4055d65396688f90a88e2dd4d91b8.jpg);"></div>
+
               <div class="col-lg-7">
                   <div class="p-5">
                       <div class="text-center">
-                          <h1 class="h4 text-gray-900 mb-4">Add Product</h1>
+                          <h1 class="h4 text-gray-900 mb-4">Add 123 Product</h1>
                       </div>
                       <form class="user">
                         <div class="form-group">
@@ -57,14 +60,32 @@
               </div>
             </div>
                 <div class="form-group">
-                  <input type="submit" class="form-control form-control-user"
-                     value="SAVE" style="background-color:#2e59d9;color: #fff;">
+                  <button type="submit"
+                  class="form-control-user  btn btn-danger btn-lg btn-block"
+
+                  [disabled]="isLoading ">
+                    <h2 *ngIf="isLoading "
+                     class="spinner-border spinner-border-sm mr-2 "></h2>
+                    {{ isLoading ? 'Loading...' : 'Delete' }}
+                  </button>
+
                 </div>
 
                 </form>
 
                   </div>
               </div>
+              <div class="col-lg-5  d-lg-block" style="background-image: url(https://i.pinimg.com/736x/76/c4/05/76c4055d65396688f90a88e2dd4d91b8.jpg);"></div>
+          </div>
+          <div class="row">
+            <button type="submit"
+            class="form-control-user btn btn-danger btn-lg btn-block"
+
+            [disabled]="isLoading ">
+              <h2 *ngIf="isLoading "
+               class="spinner-border spinner-border-sm mr-2 "></h2>
+              {{ isLoading ? 'Loading...' : 'Delete' }}
+            </button>
           </div>
       </div>
   </div>

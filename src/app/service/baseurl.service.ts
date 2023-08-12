@@ -7,4 +7,8 @@ export class BaseURLService{
   getBaseUrl(): string{
     return this.BASE_URL;
   }
+  getBase():string{
+    return this.baseUrl;
+  }
+  private readonly baseUrl = "https://localhost:5224/";
 }
