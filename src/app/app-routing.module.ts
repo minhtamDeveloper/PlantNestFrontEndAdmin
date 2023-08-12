@@ -28,6 +28,7 @@ const routes: Routes = [
       {path:'detail/product', component: ProductDetailComponent},
       {path:'detail/supplier', component: SupplierDetailComponent},
       {path:'add/product', component: ProductAddComponent},
+      
   ]},
 
 
