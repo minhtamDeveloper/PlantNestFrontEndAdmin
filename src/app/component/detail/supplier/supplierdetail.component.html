@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">List Supliers Detail</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" >
+                    <thead>
+                        <tr>
+                          <th>Id Sup</th>
+                          <th>Sup Name</th>
+                          <th>Product Name</th>
+                          <th>Price</th>
+  
+                        </tr>
+                    </thead>
+                    <!-- thực hiện vòng lặp ở đây -->
+                    <tbody>
+                        
+                      <ng-container *ngIf="SupplierList != null">
+                          <tr *ngFor="let Supplier of SupplierList ">
+                            
+                          <td>{{Supplier.id}}</td>
+                          <td>{{Supplier.supplierName}}</td>     
+                          <td>{{Supplier.productName}}</td>
+                          <td>{{Supplier.costPrice}}</td>
+                         
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+</div>

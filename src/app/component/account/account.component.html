@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Table Account</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+          <input type="submit" value="Customers Number:" style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #4e73df;">
+          <!-- // hiện thị tổng danh sách khách hàng của công ty ở đây -->
+         
+          <input type="text"style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #4e73df;" value="{{Total}} Customers +">
+          <form 
+          class="d-none d-sm-inline-block form-inline  ml-md-3 my-2 my-md-0 mw-100 navbar-search" style="padding-left: 571px;">
+          <div class="input-group"style="margin-bottom: 20px;border:none;padding right: 10px; float: right" >
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for...  "
+                  aria-label="Search" aria-describedby="basic-addon2" (keyup)="Search($event)">
+        
+          </div>
+          </form>
+          <table class="table table-bordered" >
+                  <thead>
+                      <tr>
+                        <th>Img</th>
+                        <th>Code</th>
+                        <th>Username</th>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Created</th>
+                        <th>DOB</th>
+                        <th>Status</th>
+                        <th>Address</th>
+                      </tr>
+                  </thead>
+                  <!-- thực hiện vòng lặp ở đây -->
+                  <tbody>
+                     
+                        <ng-container *ngIf="AccountList != null">
+                            <tr *ngFor="let Account of AccountList  let i = index">
+                              <ng-container *ngIf=" Account.roleId == 4">
+                            <td><img src="{{Account.imageUrl}}" width="70" height="70"></td>
+                            <td>{{Account.accountId}}</td>
+                            <td>{{Account.userName}}</td>
+                            <td>{{Account.fullName}}</td>
+                            <td>{{Account.email}}</td>
+                            <td>{{Account.phone}}</td>
+                            <td>{{Account.created}}</td>
+                            <td>
+                              {{Account.dob}}
+                            </td>
+                            <td>
+                              {{Account.status}}
+                            </td>
+                            <td>
+                              {{Account.address}}
+                            </td>
+                              </ng-container>
+                          </tr>
+                        </ng-container>
+                    
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

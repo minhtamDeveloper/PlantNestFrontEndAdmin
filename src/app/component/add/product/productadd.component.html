@@ -1,0 +1,230 @@
+<div class="container">
+  <div class="row">
+    <h1 class="mx-auto">Add Product </h1>
+   </div>
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+
+              <div class="col-lg-7">
+                  <div class="p-5">
+
+                    <ng-container *ngIf="this.formGroup!=null">
+
+
+                        <form class="user" [formGroup]="this.formGroup" >
+                          <div class="form-group">
+                            <label for="inputPassword4">Name</label>
+                            <input
+                              type="text"
+                              formControlName="productName"
+                              [ngClass]="{'border-danger': validationService.getErrorAddClass('productName', formGroup)}"
+                              class="form-control form-control-user"
+                              placeholder="Product Name">
+                            <div class="text-danger" *ngIf="validationService.getErrorText('productName', 'Product Name', formGroup)">
+                              {{ validationService.getErrorText('productName', 'Name', formGroup) }}
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="inputPassword4">Description</label>
+                            <textarea
+                            cols="30" rows="3"
+                              formControlName="description"
+                              [ngClass]="{'border-danger': validationService.getErrorAddClass('description', formGroup)}"
+                              class="form-control form-control-user"
+                              placeholder="Description"></textarea>
+                            <div class="text-danger" *ngIf="validationService.getErrorText('description', 'Description', formGroup)">
+                              {{ validationService.getErrorText('description', 'Description', formGroup) }}
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="inputPassword4">Cost Price</label>
+
+                                <input
+                                  type="number"
+                                  formControlName="costPrice"
+                                  min="0"
+                                  [ngClass]="{'border-danger': validationService.getErrorAddClass('costPrice', formGroup)}"
+                                  class="form-control form-control-user"
+                                  placeholder="Cost Price">
+                                <div class="text-danger" *ngIf="validationService.getErrorText('costPrice', 'Cost Price', formGroup)">
+                                  {{ validationService.getErrorText('costPrice', 'Cost Price', formGroup) }}
+                                </div>
+                            </div>
+                        <div class="col-sm-6">
+                            <label for="inputPassword4">Sell Price</label>
+
+                            <input
+                              type="number"
+                              min="0"
+                              formControlName="sellPrice"
+                              [ngClass]="{'border-danger': validationService.getErrorAddClass('sellPrice', formGroup)}"
+                              class="form-control form-control-user"
+                              placeholder="Sell Price">
+                            <div class="text-danger" *ngIf="validationService.getErrorText('sellPrice', 'Sell Price', formGroup)">
+                              {{ validationService.getErrorText('sellPrice', 'Sell Price', formGroup) }}
+                            </div>
+                          </div>
+
+
+                        </div>
+
+
+
+
+
+                          <div class="form-group">
+                            <label for="inputPassword4">Quantity</label>
+
+                            <input
+                              type="number"
+                              min="0"
+                              formControlName="quantity"
+                              [ngClass]="{'border-danger': validationService.getErrorAddClass('quantity', formGroup)}"
+                              class="form-control form-control-user"
+                              placeholder="Quantity">
+                            <div class="text-danger" *ngIf="validationService.getErrorText('quantity', 'Quantity', formGroup)">
+                              {{ validationService.getErrorText('quantity', 'Quantity', formGroup) }}
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <input
+                              type="date"
+                              formControlName="createdDate"
+                              [ngClass]="{'border-danger': validationService.getErrorAddClass('createdDate', formGroup)}"
+                              class="form-control form-control-user"
+                              placeholder="Created Date">
+                            <div class="text-danger" *ngIf="validationService.getErrorText('createdDate', 'Created Date', formGroup)">
+                              {{ validationService.getErrorText('createdDate', 'Created Date', formGroup) }}
+                            </div>
+                          </div>
+                          <div class="form-group">
+
+                          </div>
+
+
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <!-- // thuc len category day -->
+                              <label for="inputPassword4">Category</label>
+
+                              <select
+
+                              formControlName="categoryId"
+                              [ngClass]="{'border-danger': validationService.getErrorAddClass('categoryId', formGroup)}"
+                              class="  form-control  form-select  "
+                              placeholder="Category ID">
+                            <option *ngFor="let category of optionCategory" [value]="category.value">{{category.label}}</option>
+                            </select>
+                            <div class="text-danger" *ngIf="validationService.getErrorText('categoryId', 'Category ID', formGroup)">
+                              {{ validationService.getErrorText('categoryId', 'Category ', formGroup) }}
+                            </div>
+                            </div>
+
+                        <div class="col-sm-6">
+                          <label for="inputPassword4">Supplier</label>
+
+                          <select
+
+                            formControlName="supplierId"
+                            [ngClass]="{'border-danger': validationService.getErrorAddClass('supplierId', formGroup)}"
+                            class="  form-control  form-select  "
+                            placeholder="Supplier ID">
+                          <option *ngFor="let supplier of this.dataAllSupplier" [value]="supplier.id">{{supplier.supplierName}}</option>
+                          </select>
+                          <div class="text-danger" *ngIf="validationService.getErrorText('supplierId', 'Supplier ID', formGroup)">
+                            {{ validationService.getErrorText('supplierId', 'Supplier', formGroup) }}
+                          </div>
+                          </div>
+                        </div>
+                          <div class="form-group">
+
+                          </div>
+
+
+
+
+
+
+
+                  </form>
+                </ng-container>
+                  </div>
+              </div>
+
+              <div class="col-lg-5  d-lg-block" >
+                <div class="p-5">
+                    <ng-container
+                    *ngIf="this.selectedFileUrlIndex!=''">
+                      <img class="img-thumbnail met-img"[src]="this.selectedFileUrlIndex" style="
+                      height: 300px;" >
+                    </ng-container>
+
+
+                    <div class="form-group">
+                      <label for="files1"  [ngClass]="{'border-danger': !this.checkFileIndex}" class="file-button form-control form-control-user " tabindex="-1">
+                        Choose Index Image
+                        <input
+                          type="file" class="file-input" id="files1" name="files" accept="image/*"
+                          (change)="handleFileSelect($event)"
+                        >
+                      </label>
+                      <div class="text-danger" *ngIf="!this.checkFileIndex">
+                        Please choose index Image!
+                      </div>
+                    </div>
+                    <div class="row">
+                      <ng-container
+
+                      *ngIf="this.selectedFileUrlSide!=[]">
+                      <div class="col-lg-4" *ngFor="let option of this.selectedFileUrlSide">
+                        <img  class="img-thumbnail met-img"
+                        [src]="option" >
+                        <br>
+
+                      </div>
+
+                    </ng-container>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="files"  [ngClass]="{'border-danger': !this.checkFileListFile}"  class="file-button form-control form-control-user " tabindex="-1">
+                        Choose Side Image (max 3)
+                        <input
+                        type="file" class="file-input" id="files" name="files" multiple accept="image/*" max="3"
+                        (change)="handleFileSelectSide($event)"
+                        >
+                      </label>
+                      <div class="text-danger" *ngIf="!this.checkFileListFile">
+                        Please choose side Image!
+                      </div>
+                    </div>
+
+                  </div>
+
+              </div>
+          </div>
+          <div class="row">
+            <button type="submit"
+            class="form-control-user btn btn-primary btn-lg btn-block"
+              (click)="submit()"
+            [disabled]="isLoading ">
+              <h2 *ngIf="isLoading "
+               class="spinner-border spinner-border-sm mr-2 "></h2>
+              {{ isLoading ? 'Loading...' : 'Submit' }}
+
+
+            </button>
+          </div>
+      </div>
+  </div>
+
+
+</div>
+
+

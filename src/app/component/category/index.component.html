@@ -1,0 +1,57 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Table Product  gdfgdg   1</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+           <a [routerLink]="['/admin/add/product']" ><input type="submit" value="Add Product" style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #4e73df;"></a>
+
+           <ng-container *ngIf="this.dataCategory!=[]">
+
+              <table id="tableProductIndex"class="table table-bordered table-hover" >
+                <thead>
+                    <tr>
+                        <th>Option </th>
+                        <th>Name</th>
+
+                        <th>Date Created</th>
+                        <th>Id</th>
+                        <th>Icon</th>
+                    </tr>
+                </thead>
+                <!-- thực hiện vòng lặp ở đây -->
+                <tbody>
+                    <tr
+                    [ngClass]="{'bg-gradient-primary text-danger':!item.status}"
+                    *ngFor="let item of this.dataCategory">
+                    <td>
+                      <button type="button" class="btn btn-success" (click)="update(item.id)">Update</button>
+                      |||
+                      <button type="button" class="btn btn-info" (click)="detail(item.id)">Detail</button>
+                    </td>
+                        <td>{{item.categoryName}}</td>
+                        <td>{{item.created | date:'dd/MM/yyyy' }}</td>
+                        <td>{{item.id}}</td>
+                        <td class="">
+
+
+                            <img class="img-thumbnail" style="height:100px"
+                            [src]="(item.categoryImage!=null)?this.urlImage+item.categoryImage:
+                            'https://i.pinimg.com/736x/76/c4/05/76c4055d65396688f90a88e2dd4d91b8.jpg'">
+
+
+                            </td>
+
+                    </tr>
+
+                </tbody>
+               </table>
+           </ng-container>
+
+          </div>
+      </div>
+  </div>
+</div>

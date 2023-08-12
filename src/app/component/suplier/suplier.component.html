@@ -1,0 +1,48 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">List Supliers</h1>
+  <form 
+  class="d-none d-sm-inline-block form-inline  ml-md-3 my-2 my-md-0 mw-100 navbar-search" style="padding-left: 0px;">
+  <div class="input-group"style="margin-bottom: 20px;border:none;padding right: 10px">
+      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for...  "
+          aria-label="Search" aria-describedby="basic-addon2" (keyup)="Search($event)">
+
+  </div>
+</form>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" >
+                  <thead>
+                      <tr>
+                        <th>Code</th>
+                        <th>Username</th>                        
+                        <th>Status</th>
+                        <th>Detail</th>
+
+                      </tr>
+                  </thead>
+                  <!-- thực hiện vòng lặp ở đây -->
+                  <tbody>
+                      
+                    <ng-container *ngIf="SupplierList != null">
+                        <tr *ngFor="let Supplier of SupplierList ">
+                          
+                        <td>{{Supplier.id}}</td>
+                        <td>{{Supplier.supplierName}}</td>     
+                        <td>{{Supplier.status}}</td>
+                        <td>
+                            <a [routerLink]="['/admin/detail/supplier',{supplierId: Supplier.id}]">
+                                <input type="submit" value="See More" style="width:100px;border:none;background-Color:#4e73df;color:#fff;padding:10px">
+                            </a>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

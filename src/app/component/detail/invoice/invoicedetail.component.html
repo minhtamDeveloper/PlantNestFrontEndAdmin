@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Detail Order</h1>
+  
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+           
+                <table class="table table-bordered" >
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Product Price</th>
+                            <th>Quantity : {{totalProduct}}</th>
+                            <th>TotalPrice : {{totalPrice}}$</th>
+                            <th>Created date</th>  
+                        </tr>
+                    </thead>
+                    <!-- thực hiện vòng lặp ở đây -->
+                    
+                    <ng-container *ngIf="OrderDetailList != null">
+                        <tbody>
+                         
+                            <tr *ngFor="let OrderDetail of OrderDetailList  let i = index">
+                            <td><img src="{{OrderDetail.imageUrls}}" width="120" height="80"></td>
+                            <td>{{OrderDetail.productName}}</td>
+                            <td>{{OrderDetail.productPrice}}</td>
+                            <td>{{OrderDetail.quantity}}</td>
+                            <td>{{OrderDetail.productPrice * OrderDetail.quantity}}</td>
+                            <td>{{datepipe.transform(OrderDetail.created,'dd/MM/yyyy')}}</td>
+                        </tr>
+                    </tbody>
+                    </ng-container>
+                </table>
+                <a [routerLink]="['/admin/invoice']">
+                    <input type="submit" value="BACK" style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #26c946;"> 
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+  

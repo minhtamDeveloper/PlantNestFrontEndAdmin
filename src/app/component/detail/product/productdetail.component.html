@@ -1,0 +1,131 @@
+<ng-container *ngIf="ProductList !=null">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+      
+                    <div class="col-lg-7">
+                     
+                          <div class="p-5">
+                              <div class="text-center">
+                                  <h1 class="h4 text-gray-900 mb-4">Detail Product</h1>
+                              </div>
+                              <form class="user">
+                                  <div class="form-group row">
+                                      <div class="col-sm-4">
+                                      Name
+                                      </div>
+                                      <div class="col-sm-8">
+                                          <input type="text" class="form-control " id="exampleLastName"
+                                              value="{{ProductList.productName}}">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <div class="col-sm-4">
+                                      Created
+                                      </div>
+                                      <div class="col-sm-8">
+                                          <input type="text" class="form-control " id="exampleLastName"
+                                              value="{{ProductList.createdDate}}">
+                                      </div>
+                                    </div>
+                                <div class="form-group row">
+                                  <div class="col-sm-4">
+                                      Category Name
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control " id="exampleLastName"
+                                          value="{{ProductList.categoryName}}">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-sm-4">
+                                      Supplier Name
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control " id="exampleLastName"
+                                          value="{{ProductList.supplierName}}">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-sm-4">
+                                  Description
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <textarea type="text" class="form-control " rows="5"
+                                          value="{{ProductList.description}}"></textarea>
+                                  </div>
+                                </div>
+                              </form>
+        
+                          </div>
+                     
+                    </div>
+                    <!-- // thuc hien vong lap hien anh ra o day -->
+                    <div class="col-lg-5 d-none d-lg-block ">
+                      <div class="itemImg"  style="margin-bottom: 20px;margin-top: 20px;padding-left: 70px;">
+                        <img src="" alt="" style="height: 200px;width: 250px;">
+                      </div>
+                      <div class="itemImg" style="margin-bottom: 20px;margin-top: 20px;padding-left: 70px;">
+                        <img src="" alt="" style="height: 200px;width: 250px;">
+                      </div>
+                    </div>
+                    <td>
+                      <a [routerLink]="['/admin/product']">
+                          <input type="submit" value="Back" style="width:100px;border:none;background-Color:#58df4e;color:#fff;">
+                      </a>
+                  </td>
+                </div>
+                
+            </div>
+        </div>
+      
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+              <div class="row">
+      
+                  <div class="col-lg-7">
+                      <div class="p-5">
+                          <div class="text-center">
+                              <h1 class="h4 text-gray-900 mb-4">Commnent</h1>
+                          </div>
+                          <form class="user">
+                              <div class="form-group row">
+                                  <div class="col-sm-4 mb-3 mb-sm-0">
+                                      <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                          placeholder="First Name"value="{{ProductList.id}}">
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                          placeholder="Last Name">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                      placeholder="Email Address">
+                              </div>
+                              <div class="form-group row">
+                                  <div class="col-sm-6 mb-3 mb-sm-0">
+                                      <input type="password" class="form-control form-control-user"
+                                          id="exampleInputPassword" placeholder="Password">
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <input type="password" class="form-control form-control-user"
+                                          id="exampleRepeatPassword" placeholder="Repeat Password">
+                                  </div>
+                              </div>
+      
+                          </form>
+      
+                      </div>
+                  </div>
+      
+              </div>
+          </div>
+      </div>
+      
+      </div>
+</ng-container>
+
+

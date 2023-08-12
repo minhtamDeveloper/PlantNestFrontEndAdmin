@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Table Product</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+           <a [routerLink]="['/admin/add/product']" ><input type="submit" value="Add Product" style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #4e73df;"></a>
+           <form 
+          class="d-none d-sm-inline-block form-inline  ml-md-3 my-2 my-md-0 mw-100 navbar-search" style="padding-left: 815px;">
+          <div class="input-group"style="margin-bottom: 20px;border:none;padding right: 10px">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for...  "
+                  aria-label="Search" aria-describedby="basic-addon2" (keyup)="Search($event)">
+        
+          </div>
+          </form>
+           <table class="table table-bordered" >
+                  <thead>
+                      <tr>
+                          <th>Img</th>
+                          <th>Name</th>    
+                          <th>Quantity</th>                
+                          <th>Cost Price</th>
+                          <th>Sell Price</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <!-- thực hiện vòng lặp ở đây -->
+                  <tbody>
+                    <ng-container *ngIf="ProductList != null">
+                        <tr *ngFor="let Product of ProductList ">
+                        <td><img src="{{Product.imageUrl}}" width="70" height="70"></td>
+                        <td>{{Product.productName}}</td>
+                        <td>{{Product.quantity}}</td>   
+                        <td>{{Product.costPrice}}</td>
+                        <td>{{Product.sellPrice}}</td>   
+                        <td>{{Product.status}}</td>
+                        <!-- <td>{{Product.productid}}</td> -->
+                        <td>
+                            <a [routerLink]="['/admin/detail/product',{productId: Product.id}]">
+                                <input type="submit" value="See More" class="btn" style="width:100px;border:none;background-Color:#2051e5;color:#fff;padding:10px">
+                            </a>
+                            <a [routerLink]="['/admin/update-product',{id: Product.id}]">
+                                <input type="submit" value="Edit"  class="btn" style="width:100px;margin-left: 6px;border:none;background-Color:#b5bf27;color:#fff;padding:10px">
+                            </a>
+                        </td>
+                      </tr>
+                    </ng-container>
+                
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+

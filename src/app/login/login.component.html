@@ -1,0 +1,141 @@
+<!-- <style>
+    
+html,
+body {
+   
+}
+</style>
+<div class="main" style=" display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+width: 100%;
+height: 100%;
+background: url('https://png.pngtree.com/thumb_back/fh260/background/20210214/pngtree-plant-palm-leaf-simple-background-image_559516.jpg')no-repeat;
+background-position: center;
+background-size: cover;">
+  <section class="sign-in">
+    <div class="container_register_login">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="assets/img/signin-image.jpg" alt="sing up image"></figure>
+                <a routerLink="/register" class="signup-image card-link">
+                  No account? Sign up now!</a>
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title" style="font-family: Arial, Helvetica, sans-serif;">Sign In</h2>
+                <form method="POST" [formGroup]="form" class="register-form" id="login-form" (ngSubmit)="submit()">
+                    <div *ngIf="form.get('username').touched">
+                        <span class="text-danger" style="font-size:12px"
+                            *ngIf="form.hasError('required',['username'])">Username or email
+                            shouldn't be empty</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="your_name" id="your_name" formControlName="username" placeholder="Enter email or username"/>
+                    </div>
+                    <div *ngIf="form.get('password').touched">
+                        <span class="text-danger" style="font-size:12px"
+                            *ngIf="form.hasError('required',['password'])">Password
+                            shouldn't be empty</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" name="your_pass" formControlName="password" id="your_pass" placeholder="Enter password"/>
+                    </div>
+                    <div class="form-group  card-link" >
+                        <a href="/forgot-password" class="card-link">
+                          Forgot Password?
+                        </a>
+                        
+                    </div>
+                    <div class="form-group form-button">
+                        <button type="submit" name="signin" id="signin" class="form-submit" [disabled]="form.invalid">Submit</button>
+                    </div>
+                </form>
+                <div class="social-login">
+                    <ul class="socials">
+                        <li><i class="display-flex-center zmdi zmdi-facebook" style="padding: 5px 10px;border-radius: 10%;color: #fff;"></i></li>
+                        <li><i class="display-flex-center zmdi zmdi-twitter" style="padding: 5px 10px;border-radius: 10%;color: #fff;"></i></li>
+                        <li><i class="display-flex-center zmdi zmdi-google" style="padding: 5px 10px;border-radius: 10%;color: #fff;"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div> -->
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center" style="margin-top:140px;">
+  
+        <div class="col-xl-10 col-lg-12 col-md-9">
+  
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block" style="background-image: url(https://i.pinimg.com/564x/74/7e/47/747e47fa5478472c9532a0d2ae3335e4.jpg);width: 100%;height: 600px;"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <form class="user" method="POST" [formGroup]="form" (ngSubmit)="submit()">
+                                    <div *ngIf="form.get('username').touched">
+                                        <span class="text-danger" style="font-size:12px"
+                                            *ngIf="form.hasError('required',['username'])">Username or email
+                                            shouldn't be empty</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email"  formControlName="username"  class="form-control form-control-user"
+                                            id="exampleInputEmail" aria-describedby="emailHelp"
+                                            placeholder="Enter username or email...">
+                                    </div>
+                                    <div *ngIf="form.get('password').touched">
+                                        <span class="text-danger" style="font-size:12px"
+                                            *ngIf="form.hasError('required',['password'])">Password
+                                            shouldn't be empty</span>
+                                    </div>
+                                    <div class="form-group"> 
+                                        <input type="password" formControlName="password"class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">Remember
+                                                Me</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-user btn-block" >
+                                        Login
+                                    </button >
+                                    <hr>
+                                    <a href="#" class="btn btn-google btn-user btn-block">
+                                        <i class="fab fa-google fa-fw"></i> Login with Google
+                                    </a>
+                                    <a href="#" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                    </a>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="http://localhost:4200/forgot-password">Forgot Password?</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+        </div>
+  
+    </div>
+  
+  </div>
+  

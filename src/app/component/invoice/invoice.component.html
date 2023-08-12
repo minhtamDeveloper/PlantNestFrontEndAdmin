@@ -1,0 +1,187 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Table Order</h1>
+  
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                  <tr>
+                    <td width="20%">
+                      <div>   
+                        <ng-container *ngIf="startdateofweek != dateClone">
+                        <table border="1px">
+                          <tr>
+                            <td>From:</td>
+                            
+                            <td width="50%"><input class="form-control" type="date" [(ngModel)]="startdateofweek" (change)="updateRevenue()"></td>
+                          </tr>
+                          <tr>
+                            <td>To:</td>
+                            <td><input class="form-control" type="date" [(ngModel)]="Enddateofweek" (change)="updateRevenue()"></td>
+                          </tr>
+                        </table>
+                      </ng-container>
+                      <ng-container *ngIf="startdateofweek == dateClone">
+                        <table border="1px">
+                          <tr>
+                            <td>From:</td>
+                            <td width="50%">Start Date</td>
+                          </tr>
+                          <tr>
+                            <td>To:</td>
+                            <td>Now Date</td>
+                          </tr>
+                        </table>
+                      </ng-container>
+                      </div>
+                    </td>
+                    
+                    <td width="40%"></td>
+                  </tr>
+                 
+                </table>
+                <table class="table table-bordered" >
+                  <thead>
+                    
+                        <tr>
+                            <th colspan="2"><input type="text" placeholder="Keyword" (keyup)="Search($event)" class="form-control">
+                              <br>
+                              &nbsp;
+                            </th>
+                          
+                        <th > 
+                            <div align="center">
+                            <table>
+                              <tr>
+                                <td>Revenue:</td>
+                                <td><div class="" align="center">{{Total}} $</div></td>
+                              </tr>
+                              <tr>
+                                <td>Total Product:</td>
+                                <td><div class="" align="center">{{TotalProduct}}</div></td>
+                              </tr>
+                            </table>
+                            </div>
+                        </th>
+                            <th colspan="2"><table style="width: 100%;">
+                            
+                              <tr>
+                                <td colspan="2"> <select class="form-control" (change)="selectStatistical($event)"  style="border:none;color:#ffffff;background-color: #4e73df;">
+                                  <option value="all">All</option>
+                                  <option value="week">Week</option>
+                                  <option value="month">Month</option>
+                                  <option value="year">Year</option>
+                                 </select>
+                                </td>
+                              </tr>
+                              <ng-container *ngIf="startdateofweek != dateClone">
+                              <tr>
+                                <td width="50%"><div class="form-control" (click)="previousTime()" style="border:none;color:#ffffff;background-color: #4e73df;">Previous</div></td>
+                                <td width="50%"><div class="form-control" (click)="nextTime()" style="border:none;color:#ffffff;background-color: #4e73df;">Next</div></td>
+                              </tr>
+                            </ng-container>
+                            </table>
+                            <ng-container *ngIf="startdateofweek == dateClone">
+                              <br>
+                              &nbsp;
+                            </ng-container>
+                           
+                            </th>
+                            
+                            <th colspan="2"> 
+                              <table style="width: 100%;">
+                            
+                                <tr>
+                                  <td colspan="2">  <select class="form-control" (change)="selectStatus($event)" style="border:none;color:#ffffff;background-color: #4e73df;">
+                                    <option value="all">All</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="unpaid">Delivering</option>
+                                    <option value="cancelled">Cancelled</option>
+                                   </select> 
+                                  </td>
+                                </tr>
+                               
+                              </table>
+                             
+                          <br>
+                          &nbsp;
+                          </th>
+                          
+                        </tr>
+                        <tr>
+                        <th>Customer</th>
+                        <th width="15%">Payment Method
+                           
+                        </th>
+                        <th>Total</th>
+                        <th width="15%">Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Detail</th>
+                     
+                    </tr>
+                    </thead>
+                
+                    <!-- thực hiện vòng lặp ở đây -->
+                    <ng-container *ngIf="OrderList != null">
+                    <tbody>
+                     
+                        <tr *ngFor="let Order of OrderList  let i = index">
+                          
+  
+                          <ng-container *ngIf="i>=page*10-10 && i<page*10">
+                          <td>{{Order.fullName}}</td>
+                          <td>{{Order.paymentMethod}}</td>
+                          <td>{{Order.totalOrder}}</td>
+                          <td>{{datepipe.transform(Order.orderDate,'dd/MM/yyyy')}}</td>
+                          <td>{{Order.orderTime}}</td>
+                          <td style="background-color: white;">
+                              <div align="center">
+                              <ng-container *ngIf="Order.status == 1">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16" style="color: green">
+                                      <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                    </svg>
+                                    <div style="color: rgb(56, 230, 56)">Finished</div>
+                              </ng-container>
+                              <ng-container *ngIf="Order.status == 2">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 16" style="color:rgba(255, 80, 5, 0.936)">
+                                      <path fill-rule="evenodd" d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708z"/>
+                                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                                    </svg>
+                                    <div style="color: rgb(244, 76, 25)">Canceled</div>
+                              </ng-container>
+                              <ng-container *ngIf="Order.status == 0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rocket-takeoff-fill" viewBox="0 0 16 16">
+                                  <path d="M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.578 3.578 0 0 0-.108-.563 2.22 2.22 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2.35 2.35 0 0 0-.16-.045 3.797 3.797 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.552 2.552 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526l.24-2.408Zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361.599.599.437 1.732-.36 2.531Z" style="color:rgba(155, 146, 20, 0.936)"/>
+                                  <path d="M5.205 10.787a7.632 7.632 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925Z"/>
+                                </svg>
+                                <div style="color: rgb(199, 209, 4)">Delivering</div>
+                            </ng-container>
+                              </div>
+                          </td>
+                          <td>
+                              <a [routerLink]="['/admin/detail/invoice', {id:Order.id}]">
+                                  <input type="submit" value="See More" style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #4e73df;"> 
+                              </a>
+                          </td>
+                      </ng-container>
+                        </tr>
+                     
+                    </tbody>
+                    </ng-container>
+                </table>
+                <div class="custom-pagination">
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
+                    <li class="page-item"><a class="page-link">Page {{page}}</a></li>
+                    <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+                  </ul>
+                              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
