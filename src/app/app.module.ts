@@ -23,6 +23,8 @@ import { CategoryService } from './service/categoty.service';
 import { CategoryUpdateComponent } from './component/category/update.component';
 import { RegexApi } from './service/regex.service';
 import { CategoryDetailComponent } from './component/category/detail.component';
+import { Product123Service } from './service/product123.service';
+import { ProductUpdateComponent } from './component/add/product/productUpdate.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { CategoryDetailComponent } from './component/category/detail.component';
 
 CategoryAdd2Component,
 CategoryUpdateComponent,
-CategoryDetailComponent
+CategoryDetailComponent,
+ProductUpdateComponent
 
   ],
   imports: [
@@ -54,7 +57,7 @@ CategoryDetailComponent
 
   ],
   providers: [
-    BaseURLService,ValidatorData,CategoryService,RegexApi
+    BaseURLService,ValidatorData,CategoryService,RegexApi,Product123Service
   ],
   bootstrap: [AppComponent]
 })

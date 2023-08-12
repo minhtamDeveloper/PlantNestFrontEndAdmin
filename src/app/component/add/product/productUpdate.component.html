@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1 class="mx-auto">Add Product </h1>
+    <h1 class="mx-auto">Update Product </h1>
    </div>
   <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -90,6 +90,7 @@
                           </div>
 
                           <div class="form-group">
+                            <label for="inputPassword4">Create Date (dd/MM/YYYY)</label>
                             <input
                               type="date"
                               formControlName="createdDate"
@@ -142,12 +143,6 @@
                           <div class="form-group">
 
                           </div>
-
-                          
-
-
-
-
                   </form>
                 </ng-container>
                   </div>
@@ -158,14 +153,12 @@
                     *ngIf="this.selectedFileUrlIndex!=''">
                       <img class="img-thumbnail met-img"[src]="this.selectedFileUrlIndex" style="
                       height: 300px;" >
-                    </ng-container>
-
-
+                  </ng-container>
                     <div class="form-group">
-                      <label for="files1"  [ngClass]="{'border-danger': !this.checkFileIndex}" class="file-button form-control form-control-user " tabindex="-1">
+                      <label for="files2"  [ngClass]="{'border-danger': !this.checkFileIndex}" class="file-button form-control form-control-user " tabindex="-1">
                         Choose Index Image
                         <input
-                          type="file" class="file-input" id="files1" name="files" accept="image/*"
+                          type="file" class="file-input" id="files2" name="files" accept="image/*"
                           (change)="handleFileSelect($event)"
                         >
                       </label>
@@ -188,10 +181,10 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="files"  [ngClass]="{'border-danger': !this.checkFileListFile}"  class="file-button form-control form-control-user " tabindex="-1">
+                      <label for="files3"  [ngClass]="{'border-danger': !this.checkFileListFile}"  class="file-button form-control form-control-user " tabindex="-1">
                         Choose Side Image (max 3)
                         <input
-                        type="file" class="file-input" id="files" name="files" multiple accept="image/*" max="3"
+                        type="file" class="file-input" id="files3" name="files" multiple accept="image/*" max="3"
                         (change)="handleFileSelectSide($event)"
                         >
                       </label>
@@ -220,4 +213,3 @@
 
 </div>
 
-<product_update></product_update>

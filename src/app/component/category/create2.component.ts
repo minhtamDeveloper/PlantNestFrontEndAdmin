@@ -51,10 +51,10 @@ export class CategoryAdd2Component implements OnInit{
 
     }
     submit(){
-      // if(!this.validationService.checkFormGroupSubmit(this.formGroup)){
-      //   this.validationService.getNotification(false,"Something wrong ");
-      // return ;
-      // }
+      if(!this.validationService.checkFormGroupSubmit(this.formGroup)){
+        this.validationService.getNotification(false,"Something wrong ");
+      return ;
+      }
 this.isLoading=true;
     var a=  this.formGroup.value as Category;
 
@@ -86,6 +86,9 @@ this.isLoading=true;
         this.selectedFileUrl = '';
       }
     }
+
+
+    
      buildOptions(items:Category[], parentId = null, indent = '') {
       const options = [];
 

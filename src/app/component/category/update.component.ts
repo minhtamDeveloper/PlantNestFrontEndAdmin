@@ -73,7 +73,7 @@ export class CategoryUpdateComponent implements OnInit{
           this.healDelete=this.dataCategory.status;
           if(this.healDelete){
             this.isDelete = this.allCategory.some(c => c.categoryId==this.dataCategory.id);
-            
+
           }
 
 
@@ -86,10 +86,11 @@ export class CategoryUpdateComponent implements OnInit{
 
     }
     submit(){
-      // if(!this.validationService.checkFormGroupSubmit(this.formGroup)){
-      //   this.validationService.getNotification(false,"Something wrong ");
-      // return ;
-      // }
+      if(!this.validationService.checkFormGroupSubmit(this.formGroup)){
+        this.validationService.getNotification(false,"Something wrong ");
+
+        return ;
+      }
 this.isLoading=true;
     var a=  this.formGroup.value as Category;
 
@@ -155,7 +156,7 @@ this.isLoading=true;
       if(!confirm('Are you sure you want to restore !')) return;
       this.isLoading = true;
       this.categoryService.enable(this.id+'').then(success => {
-        this.validationService.getNotification(true,"Delete Success");
+        this.validationService.getNotification(true,"Enable Success ^_^ !");
         this.ngOnInit();
       }).catch(error => {
         this.validationService.getNotification(false,error.error);

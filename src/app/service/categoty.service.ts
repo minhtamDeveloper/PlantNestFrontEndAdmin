@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { BaseURLService } from "./baseurl.service";
+import { SelectDeQuy } from "../model/selectDeQuy.model";
 @Injectable()
 export class CategoryService {
   constructor (
@@ -30,6 +31,20 @@ export class CategoryService {
         a.controls.categoryName.disable();
       }
     return a;
+  }
+  buildOptions(items:Category[], parentId = null, indent = ''):SelectDeQuy[] {
+    const options :SelectDeQuy[] = [];
+    
+    items
+      .filter(item => item.categoryId=== parentId)
+      .forEach(item => {
+        options.push({ value: item.id+'', label: indent + item.categoryName });
+
+        const children = this.buildOptions(items, item.id, indent + '--');
+        options.push(...children);
+      });
+
+    return options;
   }
   formData(category:Category,file?:File):FormData{
     var a= new FormData();
