@@ -8,49 +8,51 @@
       <div class="card-body">
           <div class="table-responsive">
            <a [routerLink]="['/admin/add/product']" ><input type="submit" value="Add Product" style="margin-bottom: 20px;border:none;padding: 10px;color:#fff;background-color: #4e73df;"></a>
-              <table class="table table-bordered" >
+           <form
+          class="d-none d-sm-inline-block form-inline  ml-md-3 my-2 my-md-0 mw-100 navbar-search" style="padding-left: 815px;">
+          <div class="input-group"style="margin-bottom: 20px;border:none;padding right: 10px">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for...  "
+                  aria-label="Search" aria-describedby="basic-addon2" (keyup)="Search($event)">
+
+          </div>
+          </form>
+           <table class="table table-bordered" >
                   <thead>
                       <tr>
+
+                          <th>Img</th>
                           <th>Name</th>
-                          <th>Description</th>
+                          <th>Quantity</th>
                           <th>Cost Price</th>
                           <th>Sell Price</th>
-                          <th>Quantity</th>
-                          <th>Created Date</th>
-                          <th>Category</th>
-                          <th>Supplier</th>
                           <th>Status</th>
+                          <th>Action</th>
+
                       </tr>
                   </thead>
-                  
+
                   <!-- thực hiện vòng lặp ở đây -->
                   <ng-container *ngIf="ProductList != null">
                   <tbody>
-                      <tr *ngFor="let Product of ProductList  let i = index">
+
+                    <ng-container *ngIf="ProductList != null">
+                        <tr *ngFor="let Product of ProductList ">
+                        <td><img src="{{Product.imageUrl}}" width="70" height="70"></td>
                         <td>{{Product.productName}}</td>
-                        <td>{{Product.description}}</td>
+                        <td>{{Product.quantity}}</td>
                         <td>{{Product.costPrice}}</td>
                         <td>{{Product.sellPrice}}</td>
-                        <td>{{Product.quantity}}</td>
-                        <td>{{datepipe.transform(Product.createDate,'dd/MM/yyyy')}}</td>
-                        <td>{{Product.categoryName}}</td>
-                        <td>{{Product.supplierName}}</td>
+                        <td>{{Product.status}}</td>
+                        <!-- <td>{{Product.productid}}</td> -->
                         <td>
-                            <div align="center">
-                            <ng-container *ngIf="Product.status == 1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                                  </svg>
-                            </ng-container>
-                            <ng-container *ngIf="Product.status == 0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708z"/>
-                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                                  </svg>
-                            </ng-container>
-                        </div>
+                            <a [routerLink]="['/admin/detail/product',{productId: Product.productid}]">
+                                <input type="submit" value="See More" style="width:100px;border:none;background-Color:#4e73df;color:#fff;padding:10px">
+                            </a>
+
                         </td>
                       </tr>
+                    </ng-container>
+
 
                   </tbody>
                   </ng-container>

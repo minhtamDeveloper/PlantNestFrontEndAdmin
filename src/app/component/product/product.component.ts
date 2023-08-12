@@ -2,8 +2,13 @@
 import { DatePipe } from "@angular/common";
 import { Component, OnInit ,} from "@angular/core";
 import { Router } from "@angular/router";
+
 import { Product } from "src/app/models/product.models";
 import { ProductService } from "src/app/service/product.service";
+
+import { Product123 } from "src/app/model/product123.model";
+import { ProductAPIService } from "src/app/service/product.service";
+
 
 
 @Component({
@@ -16,25 +21,49 @@ import { ProductService } from "src/app/service/product.service";
 export class ProductComponent implements OnInit{
 
 
-  ProductList : Product[];
+
+  ProductList : Product123[];
+  page : number;
   constructor(
-    public datepipe : DatePipe,
-    private router: Router,
-    private productService : ProductService,
-   
+      private ProductService: ProductAPIService,
+      private router : Router,
   ){}
-    ngOnInit() {
-      this.productService.findAll().then(
+  ngOnInit() {
+
+      this.ProductService.showAll().then(
+          result => {
+            this.ProductList = result as Product123[];
+            console.log(this.ProductList);
+          },
+          error =>{
+            console.log(error);
+          }
+        )
+  }
+  Search(evt : any){
+    var keyword = evt.target.value.toUpperCase();
+    if(keyword == ''){
+      this.ProductService.showAll().then(
         result => {
-          console.log('AVC');
-          this.ProductList = result["result"] as Product[];
-          console.log(this.ProductList);
+          this.ProductList = result as Product123[];
+          // console.log(this.ProductList);
+
         },
         error =>{
-          console.log('AVCSSSSSSSSSS');
           console.log(error);
         }
       )
-    }
+    }else{
+      this.ProductService.search(keyword).then(
+        res =>{
+            this.ProductList = res as Product123[];
+            console.log(this.ProductList);
+        },
+        err =>{
+            console.log(err);
+        }
+    )
 
+    }
+  }
 }

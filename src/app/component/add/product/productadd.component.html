@@ -9,6 +9,7 @@
 
               <div class="col-lg-7">
                   <div class="p-5">
+
                     <ng-container *ngIf="this.formGroup!=null">
 
 
@@ -68,6 +69,8 @@
                               {{ validationService.getErrorText('sellPrice', 'Sell Price', formGroup) }}
                             </div>
                           </div>
+
+
                         </div>
 
 
@@ -143,7 +146,8 @@
 
                           </div>
 
-                          
+
+
 
 
 
@@ -152,6 +156,7 @@
                 </ng-container>
                   </div>
               </div>
+<<<<<<< HEAD
               <div class="col-lg-5  d-lg-block" >
                 <div class="p-5">
                     <ng-container
@@ -212,6 +217,8 @@
               <h2 *ngIf="isLoading "
                class="spinner-border spinner-border-sm mr-2 "></h2>
               {{ isLoading ? 'Loading...' : 'Submit' }}
+
+
             </button>
           </div>
       </div>

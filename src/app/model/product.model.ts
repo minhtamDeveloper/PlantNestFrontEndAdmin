@@ -1,6 +1,8 @@
 import { Category } from "./category.model";
 import { Image } from "./image.model";
+
 import { Supplier123 } from "./supplier123.model";
+
 
 export class Product{
   id: number ;
@@ -20,5 +22,7 @@ export class Product{
   // comments?: Comment[] = [];
    images?: Image[] = [];
   // orderDetails?: OrderDetail[] = [];
+
   supplier?: Supplier123;
+
 }

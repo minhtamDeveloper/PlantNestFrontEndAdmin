@@ -13,3 +13,23 @@ export class ProductService {
         return await lastValueFrom(this.HttpClient.get(this.BaseUrlService.getBaseUrl()+'Product/findAll'));
     }
 }
+@Injectable()
+export class ProductAPIService{
+   constructor(
+    private baseUrlService:BaseURLService,
+    private httpClient: HttpClient,
+){}
+async showAll(){
+    return await lastValueFrom(this.httpClient.get(this.baseUrlService.getBaseUrl()+'product/showAll'));
+  }
+async search(keyword : string){
+    return await lastValueFrom(this.httpClient.get(this.baseUrlService.getBaseUrl()+'product/search/'+keyword));
+  }
+async SearchId(id : string){
+    return await lastValueFrom(this.httpClient.get(this.baseUrlService.getBaseUrl()+'product/searchBySupId/'+id));
+  }
+async Img(id : string){
+    return await lastValueFrom(this.httpClient.get(this.baseUrlService.getBaseUrl()+'product/ImgId/'+id));
+  }
+}
+

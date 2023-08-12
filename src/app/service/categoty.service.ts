@@ -4,7 +4,9 @@ import { Injectable } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { BaseURLService } from "./baseurl.service";
+
 import { SelectDeQuy } from "../model/selectDeQuy.model";
+
 @Injectable()
 export class CategoryService {
   constructor (
@@ -32,9 +34,10 @@ export class CategoryService {
       }
     return a;
   }
+
   buildOptions(items:Category[], parentId = null, indent = ''):SelectDeQuy[] {
     const options :SelectDeQuy[] = [];
-    
+
     items
       .filter(item => item.categoryId=== parentId)
       .forEach(item => {
@@ -46,6 +49,7 @@ export class CategoryService {
 
     return options;
   }
+
   formData(category:Category,file?:File):FormData{
     var a= new FormData();
     a.append('data',JSON.stringify(category));

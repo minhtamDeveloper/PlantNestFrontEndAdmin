@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit ,} from "@angular/core";
 import { Router } from "@angular/router";
 import { Category } from "src/app/model/category.model";
+
 import { BaseURLService } from "src/app/service/baseurl.service";
+
 import { CategoryService } from "src/app/service/categoty.service";
 import { ValidatorData } from "src/app/service/validatorData.service";
 declare let $:any ;
@@ -19,19 +21,25 @@ export class CategoryIndexComponent implements OnInit,AfterViewInit{
   activeBouquet!: string;
   allCategory:Category[];
   dataCategory:Category[];
+
   urlImage:string;
+
   constructor(
     private router: Router,
     private categoryService: CategoryService,
     public validationService :ValidatorData,
+
     private baseUrl:BaseURLService,
+
   ){}
   ngOnInit() {
     this.allCategory=[];
     this.dataCategory=[];
+
     this.urlImage=this.baseUrl.getBase();
   }
   ngAfterViewInit(): void {
+
 
 
     this.categoryService.getAll().then(allCategory=>{

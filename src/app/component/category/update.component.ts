@@ -86,11 +86,13 @@ export class CategoryUpdateComponent implements OnInit{
 
     }
     submit(){
+
       if(!this.validationService.checkFormGroupSubmit(this.formGroup)){
         this.validationService.getNotification(false,"Something wrong ");
 
         return ;
       }
+
 this.isLoading=true;
     var a=  this.formGroup.value as Category;
 
@@ -156,7 +158,11 @@ this.isLoading=true;
       if(!confirm('Are you sure you want to restore !')) return;
       this.isLoading = true;
       this.categoryService.enable(this.id+'').then(success => {
+
         this.validationService.getNotification(true,"Enable Success ^_^ !");
+
+
+
         this.ngOnInit();
       }).catch(error => {
         this.validationService.getNotification(false,error.error);

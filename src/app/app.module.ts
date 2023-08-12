@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './component/product/product.component';
@@ -8,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponnent } from './login/login.component';
 import { AdminComponnent } from './component/admin/admin.component';
-import { AccountComponent } from './component/account/account.component';
+
 import { ContactComponent } from './component/contact/contact.component';
 import { InvoiceComponent } from './component/invoice/invoice.component';
 import { InvoiceDetailComponent } from './component/detail/invoice/invoicedetail.component';
@@ -27,11 +26,21 @@ import { CategoryDetailComponent } from './component/category/detail.component';
 import { Product123Service } from './service/product123.service';
 import { ProductUpdateComponent } from './component/add/product/productUpdate.component';
 
-import { ProductService } from './service/product.service';
+import { ProductAPIService, ProductService } from './service/product.service';
 
 import { DatePipe } from '@angular/common';
 import { OrderService } from './service/order.service';
 import { OrderDetailService } from './service/orderDetail.service';
+
+
+import { AccountAPIService } from './service/account.service';
+import { SupplierAPIService } from './service/supplier.service';
+import { AccountComponnent } from './component/account/account.component';
+import { SupplierDetailComponent } from './component/detail/supplier/supplierdetail.component';
+
+import { ImagesAPIService } from './service/images.service';
+
+
 
 
 @NgModule({
@@ -40,20 +49,32 @@ import { OrderDetailService } from './service/orderDetail.service';
     AdminComponnent,
     ProductComponent,
     LoginComponnent,
-    AccountComponent,
+    AccountComponnent,
     ContactComponent,
     InvoiceComponent,
     SuplierComponent,
     InvoiceDetailComponent,
     ProductDetailComponent,
+
     ProductAddComponent,
+
+
+
+    SupplierDetailComponent,
+
+
+
 
     CategoryIndexComponent,
 
 CategoryAdd2Component,
 CategoryUpdateComponent,
-CategoryDetailComponent,
+
+
 ProductUpdateComponent,
+
+CategoryDetailComponent,
+
 
 
   ],
@@ -67,11 +88,20 @@ ProductUpdateComponent,
 
   ],
   providers: [
-    BaseURLService,ValidatorData,CategoryService,RegexApi
+
+    BaseURLService,RegexApi
     ,Product123Service, ProductService,
     OrderService,
     OrderDetailService,
     DatePipe,
+    AccountAPIService,
+    SupplierAPIService,
+    ProductAPIService,
+    ImagesAPIService,
+
+   CategoryService
+
+
   ],
 
 
