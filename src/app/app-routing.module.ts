@@ -11,6 +11,7 @@ import { SuplierComponent } from './component/suplier/suplier.component';
 import { ProductDetailComponent } from './component/detail/product/productdetail.component';
 import { ProductAddComponent } from './component/add/product/productadd.component';
 
+
 const routes: Routes = [
   {path: 'login', component: LoginComponnent},
   {

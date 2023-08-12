@@ -15,6 +15,11 @@ import { InvoiceDetailComponent } from './component/detail/invoice/invoicedetail
 import { SuplierComponent } from './component/suplier/suplier.component';
 import { ProductDetailComponent } from './component/detail/product/productdetail.component';
 import { ProductAddComponent } from './component/add/product/productadd.component';
+import { ProductService } from './service/product.service';
+import { BaseURLService } from './service/baseurl.service';
+import { DatePipe } from '@angular/common';
+import { OrderService } from './service/order.service';
+import { OrderDetailService } from './service/orderDetail.service';
 
 @NgModule({
   declarations: [
@@ -28,8 +33,7 @@ import { ProductAddComponent } from './component/add/product/productadd.componen
     SuplierComponent,
     InvoiceDetailComponent,
     ProductDetailComponent,
-    ProductAddComponent
-
+    ProductAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,13 @@ import { ProductAddComponent } from './component/add/product/productadd.componen
     HttpClientModule
     ,
   ],
-  providers: [],
+  providers: [
+    BaseURLService,
+    ProductService,
+    OrderService,
+    OrderDetailService,
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
