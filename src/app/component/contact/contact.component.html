@@ -10,25 +10,35 @@
               <table class="table table-bordered" >
                   <thead>
                       <tr>
+                          <th>ID</th>
                           <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
+                          <th>Email</th>
+                          <th>Subject</th>
+                          <th>Message</th>
+                          <th>Created Date</th>
+                          <th>Action</th>
                       </tr>
                   </thead>
                   <!-- thực hiện vòng lặp ở đây -->
+                  
                   <tbody>
-                      <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
+                    <ng-container  *ngIf="contacts != null">
+                      <tr  *ngFor="let contact of contacts">
+                        <td  class="text-center">{{contact.id}}</td>
+                        <td  class="text-center">{{contact.name}}</td>
+                        <td  class="text-center">{{contact.email}}</td>
+                        <td  class="text-center">{{contact.subject}}</td>
+                        <td  class="text-center">{{contact.message}}</td>
+                        <td  class="text-center">{{contact.created}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm" (click)="delete(contact.id)" value="{{contact.id}}">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Delete
+                            </button>
+                        </td>
                       </tr>
-
+                    </ng-container>
                   </tbody>
               </table>
           </div>

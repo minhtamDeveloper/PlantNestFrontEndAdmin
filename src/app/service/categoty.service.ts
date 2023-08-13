@@ -29,7 +29,7 @@ export class CategoryService {
 
         a.controls.categoryName.setValue(data.categoryName);
       }
-      if(!data.status){
+      if(!data.status ){
         a.controls.categoryId.disable();
 
         a.controls.categoryName.disable();
